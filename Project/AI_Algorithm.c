@@ -8,13 +8,13 @@ int max();
 int win();
 
 char player='x', ai='o', empty=' '; 
-int row = 0, col = 0;
-// int board_spots[3][3] = {{0,1,2}, {3,4,5}, {6,7,8}};
+int row, col;
+int board_spots[3][3] = {{0,1,2}, {3,4,5}, {6,7,8}};
 
 int main();
 int main() {
-    //board();
-    win();
+    board();
+    win(board_spots[row][col]);
     minimax();
     min();
     max();
@@ -22,28 +22,28 @@ int main() {
 
 // this function is to read the board location for eg
 
-// int board() {
-//     // declare row and col as 0 because array starts from 0
-//     // declare array and the size and put the number in the array
-//     //loop for row
-//     for (row = 0; row < 3; ++row) {
-//         //loop for col
-//         for (col = 0; col < 3; ++col) {
-//             //for each row, col print the number in the box for eg
+int board() {
+    // declare row and col as 0 because array starts from 0
+    // declare array and the size and put the number in the array
+    //loop for row
+    for (row = 0; row < 3; ++row) {
+        //loop for col
+        for (col = 0; col < 3; ++col) {
+            //for each row, col print the number in the box for eg
 
-//             //         Col0    Col1    Col2
-//             // Row0   0 , 0 | 0 , 1  | 0 , 2
-//             //        _Box0_|__Box1__|_Box2_              
-//             // Row1   1 , 0 | 1 , 1  | 1 , 2
-//             //        _Box3_|__Box4__|_Box5_
-//             // Row2   2 , 0 | 2 , 1  | 2 , 2
-//             //         Box6 |  Box7  | Box8
+            //         Col0    Col1    Col2
+            // Row0   0 , 0 | 0 , 1  | 0 , 2
+            //        _Box0_|__Box1__|_Box2_              
+            // Row1   1 , 0 | 1 , 1  | 1 , 2
+            //        _Box3_|__Box4__|_Box5_
+            // Row2   2 , 0 | 2 , 1  | 2 , 2
+            //         Box6 |  Box7  | Box8
 
-//             printf("row[%d], col[%d] = %d \n", row,col,board_spots[row][col]);
-//         }
-//     }
-//     return 0;
-// }
+            printf("row[%d], col[%d] = %d \n", row,col,board_spots[row][col]);
+        }
+    }
+    return 0;
+}
 
 // function to check if there is a winner
 int win() {
@@ -53,11 +53,9 @@ int win() {
     // if they are they same, then check char,
     // check if player or AI won
     // esle if column are not the same, return 0
-
-    int board_spots[3][3] = {{0,1,2}, {3,4,5}, {6,7,8}};
-
-    for (row = 0; row < 3; row++) {
-        if (board_spots[row][0] == board_spots[row][1] && board_spots[row][1] == board_spots[row][2]) {
+    for (row = 0; row < 3; ++row) {
+        if (board_spots[row][0] == board_spots[row][1] 
+        && board_spots[row][1] == board_spots[row][2]) {
             printf("row win");
         }
     }
@@ -68,8 +66,9 @@ int win() {
     // if they are they same, then check char,
     // check if player or AI won
     // esle if row are not the same, return 0
-    for (col = 0; col < 3; col++) {
-        if (board_spots[0][col] == board_spots[1][col] && board_spots[1][col] == board_spots[2][col]) {
+    for (col = 0; col < 3; ++col) {
+        if (board_spots[0][col] == board_spots[1][col] 
+        && board_spots[1][col] == board_spots[2][col]) {
             printf("col win");
         }
     }
@@ -82,11 +81,8 @@ int win() {
         printf("diagonal win");
     }
 
-}
-
-// minimax function to run the minimax algorithm
-int minimax() {
-
+    // After checking for rows, columns and diagonal for wins, if there are no winner, then return 0 to continue the game
+    return 0;
 }
 
 // max() is the maximiser function
@@ -98,3 +94,9 @@ int max() {
 int min() {
 
 }
+
+// minimax function to run the minimax algorithm
+int minimax() {
+
+}
+
