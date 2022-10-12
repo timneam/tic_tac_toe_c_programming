@@ -26,22 +26,19 @@ int main() {
 //              |        |
 
 
-int board(row, col) {
-    int row;
-    int col;
-    int arr[3][3] = {{ , , }, { , , }, { , , }};
+int board() {
+    int row = 0, col = 0;
+    int arr[3][3] = {{0,1,2}, {3,4,5}, {6,7,8}};
 
     //loop for row
-    for (row = 1; row < 4; ++row) {
+    for (row = 0; row < 3; ++row) {
         //loop for col
-        for (col = 1; col < 4; ++col) {
+        for (col = 0; col < 3; ++col) {
             //for each row, col if there is an empty,
-            if (arr[row][col] == " ");
-            //return true
-            return true;
+            printf("row[%d], col[%d] = %d \n", row,col,arr[row][col]);
         }
     }
-    return false;
+    return 0;
 }
 
 int win() {
