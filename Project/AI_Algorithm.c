@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 
+int main();
 int board();
 int minimax();
 int min();
@@ -9,9 +10,12 @@ int win();
 
 char player='x', ai='o', empty=' '; 
 int row, col;
-int board_spots[3][3] = {{0,1,2}, {3,4,5}, {6,7,8}};
+int board_spots[3][3] = {
+                         { 0 , 1 , 2 }, 
+                         { 3 , 4 , 5 }, 
+                         { 6 , 7 , 8 }
+                        };
 
-int main();
 int main() {
     board();
     win(board_spots[row][col]);
